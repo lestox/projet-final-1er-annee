@@ -1,0 +1,351 @@
+/*Les fonts du site*/
+@font-face {
+    font-family: "alexana";
+    src: url('../assets/Fonts/alexana-webfont.woff2') format('woff2'),
+    url('../assets/Fonts/alexana-webfont.woff') format('woff'),
+    url("../assets/Fonts/alexana.ttf")format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "zekton";
+    src: url('../assets/Fonts/zekton-webfont.woff') format('woff2'),
+    url('../assets/Fonts/zekton-webfont.woff') format('woff'),
+    url("../assets/Fonts/zekton.ttf")format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --bg_color: #353535;
+    --bg_message: rgba(10,10,10,0.5);
+    --border_neon: #00EBEC;
+    --white: #fff;
+}
+
+/*_____________________ VALEURS COMMMUNES DES DEUX PAGES (landing et onboarding) ____________________________*/
+
+/* valeurs général de la page */
+body,
+body > div#wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    max-width: 100%;
+    height : 100vh;
+    box-sizing: content-box;
+}
+/* Background de la page*/
+body > div#wrapper > img {
+    width : 100vw;
+    max-width: 100%;
+    height : 100vh;
+    image-rendering: auto; /* Pas certaine de son efficacité */
+}
+
+
+ /*_________________________________ LANDING.HTML CSS __________________________________________*/
+
+/* Placement + esthétique du logo et du boutton */
+
+/* La div qui englobe le logo et le bouton */
+body > div#wrapper > div#access {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+}
+/*Le logo du shield*/
+body > div#wrapper > div#access > img#logo_shield {
+    width: max(20vw,200px);
+    margin-bottom: 5em;
+}
+
+/* ---- bouton + animation ---- */  
+
+#animatebutton {
+    font-family: "zekton";
+    font-size: max(2vw,20px);
+    text-transform: uppercase;
+    padding: 0.6em;
+    text-align: center;
+    letter-spacing: 1px;
+    width: max(20vw, 200px);
+    position: absolute;
+    bottom: -25px;
+    overflow: hidden;
+}
+
+/* Animation du haut */
+#animatebutton span:nth-child(1) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--white),var(--white));
+    animation: animate1 2.5s linear infinite;
+}
+
+@keyframes animate1 {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Animation de droite */
+#animatebutton span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--white),var(--white));
+    animation: animate2 2.5s linear infinite;
+    animation-delay: 1.25s;
+}
+
+@keyframes animate2 {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+/* Animation du bas */
+#animatebutton span:nth-child(3) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to left, var(--white),var(--white));
+    animation: animate3 2.5s linear infinite;
+
+}
+
+@keyframes animate3 {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Animation de gauche */
+#animatebutton span:nth-child(4) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to top, var(--white),var(--white));
+    animation: animate4 2.5s linear infinite;
+    animation-delay: 1.25s;
+}
+
+@keyframes animate4 {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+ /*_________________________________ ONBOARDING.HTML CSS __________________________________________*/
+
+ /* Valeurs générals du texte */
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+p{
+    font-family: "zekton";
+    font-size: max(1.5vw, 0.8em);
+    text-align: center;
+    padding: 1em;
+    color: var(--white);
+    animation: text 1.7s ease-in-out;
+}
+
+@keyframes text {
+    0% {
+        font-size: 0;
+        display: none;
+        opacity: 0;
+    }
+    95% {
+        font-size: 0;
+        display: none;
+        opacity: 0;
+    }
+    100% {
+        font-size: max(1.5vw, 1em);
+        display: hidden;
+    }
+}
+
+.warning {
+    animation: blinker 3s ease-in-out;
+}
+
+/* Effet de clignotement de texte */
+@keyframes blinker {
+
+    0% {
+        opacity: 0;
+      }
+    70% {
+        opacity: 1;
+      }
+    71% {
+        opacity: 0;
+      }
+    72% {
+        opacity: 1;
+      }
+    73% {
+        opacity: 0;
+      }
+    74% {
+        opacity: 1;
+      }
+    75% {
+        opacity: 0;
+      } 
+    80% {
+        opacity: 1;
+      }
+    90% {
+        opacity: 0;
+      }  
+    100% {
+        opacity: 1;
+      }
+  }
+
+/* Placement + apparence du message affiché */
+body > div#wrapper > div#message {
+     /* Placement */
+    position: absolute;
+    text-align: center;
+    /* Apparence */
+    max-height: 52.5%;
+    width: max(60vw,300px);
+    background-color: var(--bg_message);
+    border-left: 2px solid var(--border_neon);
+    border-right: 2px solid var(--border_neon);
+    /* animation: blinker 1.5s ease-out;
+    animation-delay: 0.2s; */
+    animation: open  1.5s ease-out;
+ }
+
+ /* Effet d'ouverture du disclaimer */
+ @keyframes open {
+     0% {
+         width : 0;
+     }
+     40% {
+         width: 0;
+     }
+     100% {
+        width: max(60vw,295px);
+     }
+ }
+
+ /* premier p (ATTENTION) */
+ body > div#wrapper > div#message > h1:nth-child(1) {
+    font-family: "alexana";
+    font-size: max(2.5vw, 20px);;
+    text-transform: uppercase;
+    padding: 1em;
+    color: var(--white);
+ }
+ /* second p (paragraphe) */
+ body > div#wrapper > div#message > p:nth-child(2) {
+    line-height:1.5em;
+    padding: 1.5em;
+ }
+ /* troisième p (question) */
+ body > div#wrapper > div#message > p:nth-child(3) {
+    padding-bottom:0;
+ }
+
+ body > div#wrapper > div#message > p, #choice {
+     animation: delai 2s ease-in-out;
+ }
+
+@keyframes delai {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+         opacity: 0;
+    }
+}
+
+
+ /* placement + apparence de la réponse (oui / non) */
+ body > div#wrapper > div#message > div#choice {
+    /* Placement */
+   display : flex;
+   justify-content: center;
+
+   /* Apparence */
+   width: 100%;
+   padding-bottom: 2.5em;
+}
+
+/* interaction avec le choix de l'utilisateur au survol (Oui & Non) */
+ body > div#wrapper > div#message > div#choice > a::after {    
+    content: '';
+    position: absolute;
+    width: max(4vw,25px);
+    transform: scaleX(0);
+    height: 2px;
+    background-color: var(--border_neon);
+    transform-origin: bottom left;
+    transition: transform 0.2s ease-out;
+    margin-left: -3%;
+    margin-top: max(-1.5%, -11px);
+}
+body > div#wrapper > div#message > div#choice > a:hover::after {
+    transform: scaleX(1);
+}
+
+marquee {
+    background-color: var(--white);
+    opacity: 0.5;
+    color: black;
+    font-family: "zekton";
+    font-size: 2vw;
+    margin-bottom: 0.5em;
+    position: absolute;
+    bottom: 0;
+    padding: 1vh 0;
+}
+
+
+marquee {
+    background-color: var(--white);
+    opacity: 0.5;
+    color: black;
+    font-family: "zekton";
+    font-size: 2vw;
+    margin-bottom: 0.5em;
+    position: absolute;
+    bottom: 0;
+    padding: 1vh 0;
+}

@@ -1,0 +1,405 @@
+@font-face {
+    font-family: "zekton";
+    src: url('../assets/Fonts/zekton-webfont.woff') format('woff2'),
+    url('../assets/Fonts/zekton-webfont.woff') format('woff'),
+    url("../assets/Fonts/zekton.ttf")format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* Valeurs générals de la page */
+:root {
+    --transparent:rgba(255,255,255,0);
+    --white : white;
+    --neon_blue: #00EBEC;
+}
+
+body {
+    position: relative;
+    overflow:hidden;
+}
+
+/* Div qui servira à placer tous les éléments de fonds */
+body,
+body > div#wrapper{
+    /*placement*/
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /*apparence*/
+    width: 100vw;
+    max-width: 100%;
+    height : 100vh;
+    box-sizing: content-box;
+    overflow:hidden;
+    /* background */
+    background: url("../assets/fondNoirCarreaux.png") center;
+    
+}
+
+
+/*élément de gauche  */
+body > div#wrapper > img#gauche {
+    /*position*/
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    /*apparence*/
+    height:80vh;
+}
+
+
+
+/*Le container contenant le radar + les noms + les photo et descriptif*/
+body > div#wrapper > div#container {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap-reverse;/*pour renvoyer l'image en bas en bas au responsive*/
+    justify-content: space-evenly;
+    align-items: space-around;
+    align-content: space-evenly;
+    box-sizing: content-box;
+    /* overflow: hidden; */
+    width: 100vw;
+    max-width: 100%;
+    max-height: calc(100% - 200px);
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+
+div#container > div.radar {
+    /*Placement*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vw;
+    /*apparence*/
+    width: max(37vw,250px);
+    height: max(37vw,250px);
+}
+
+/* Le svg du radar et son placement*/
+div.radar svg {
+    /*apparence*/
+    width: max(36vw,250px);
+    height: max(36vw,250px);
+}
+
+/*apparence de l'avancée de la vie de chaque hero */
+rect {
+    /*apparence*/
+    fill: var(--neon_blue);
+}
+
+/* La chronologie (les dates 10ans) */
+.radar ul#date {
+    /*position*/
+    position: absolute;
+    text-align: center;
+
+    /*apparence*/
+    color: var(--white);
+    font-family: "zekton";
+    font-size: max(1vw,6px);
+}
+/*2021*/
+.radar ul#date li:nth-child(1) {
+    position: absolute;
+    color: var(--neon_blue);
+    bottom: max(10.5vw,70px);
+}
+/*2010*/
+.radar ul#date li:nth-child(2) {
+    position: absolute;
+    top: max(3.5vw,25px);
+}
+/*2020*/
+.radar ul#date li:nth-child(3) {
+    position: absolute;
+    top: max(8vw,55px);
+}
+/*2030*/
+.radar ul#date li:nth-child(4) {
+    position: absolute;
+    top: max(12.5vw,88px);
+}
+/*2040*/
+.radar ul#date li:nth-child(5) {
+    position: relative;
+    top: max(16.5vw,117px);
+}
+
+/* Tout les noms des héros */
+.radar div.name {
+    position: absolute;
+}
+
+.radar div.name > p {
+    /*position*/
+    position: absolute;
+
+    /*apparence*/
+    cursor: pointer;
+    font-family: "zekton";
+    font-size: max(1.5vw,8px);
+    color: var(--white);
+
+    cursor: pointer;
+
+    /*A voir*/
+    border-radius: 100%;
+    background: radial-gradient(circle, rgba(0,254,255,0.6) 0%, rgba(0, 255, 255, 0.137) 40%,rgba(106, 128, 128, 0)170%);
+}
+
+/* Hulk*/
+.radar p:nth-child(1) {
+    bottom: max(18vw,130px);
+    left: max(6vw,40px);
+}
+
+/* Captain America */
+.radar p:nth-child(2) {
+    bottom: max(12vw,75px);
+    left: max(17vw,110px);
+}
+
+/* Black Widow */
+.radar p:nth-child(3) {
+    left: max(20vw,135px);
+    bottom: -1.5vw;
+}
+
+/* Doctor Strange */
+.radar p:nth-child(4) {
+    top: max(12vw,80px);
+    left: max(17vw,110px);
+}
+
+/* Spiderman */
+.radar p:nth-child(5) {
+    top: max(18vw,130px);
+    left: max(6vw,30px);
+}
+
+/* Black Panther */
+.radar p:nth-child(6) {
+    top: max(18vw,130px);
+    right: max(6vw,30px);
+}
+
+/* Thor */
+.radar p:nth-child(7) {
+    top: max(12vw,90px);
+    right: max(17vw,110px);
+}
+
+/* Captain Marvel */
+.radar p:nth-child(8) {
+    right: max(20vw,140px);
+    bottom: -1.5vw;
+}
+
+/* Ant-man */
+.name p:nth-child(9) {
+    bottom: max(12vw,90px);
+    right: max(17vw,110px);
+}
+
+/* Iron man */
+.radar p:nth-child(10) {
+    bottom: max(18vw,130px);
+    right: max(6vw,40px);
+
+}
+
+
+/* Pour rendre visible la photo du hero uniquement au click*/
+div#container > div.remaining_time:not(.visible){
+    display: none;
+}
+
+div#container > div.remaining_time {
+    /*placement*/
+    /*apparencce*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 2;
+    margin-right: 7.5vw;
+    height: calc(100% - 100px);
+    margin-top: 30px;
+
+}
+div#container > div.remaining_time > div#all_infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+div#container > div.remaining_time > div#all_infos > div.info_data {
+    border:1px solid var(--neon_blue);
+    background: rgba(0, 0, 0, 0.623);
+    border-radius: 35px;
+    width: max(12vw,80px);
+    color: var(--white);
+    font-family: "zekton";
+    font-size: max(1vw,7px);
+    bottom:0;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.5vw 0;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+/*Lancement de l'animation au clic */
+div#container > div.remaining_time > div#all_infos > div.info_data {
+    animation: spoiler 0.5s linear 0.5s ;
+}
+
+/*Clignotement du texte qui ouvre la data*/
+@keyframes spoiler {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
+}
+div#container > div.remaining_time img#hero {
+    /*placement*/
+    z-index: 3;
+    /*apparence*/
+    width: max(25vw,200px);
+    height: max(25vw,200px);
+}
+div#container > div.remaining_time > div#all_infos > div.info_time {
+    /*placement*/
+    z-index: 3;
+    /*apparence*/
+    color: var(--white);
+    font-family: "zekton";
+    display: flex;
+    flex-direction: column;
+}
+
+
+div#container > div.remaining_time > div#all_infos > div.info_time > p#dDay {
+    /*apparence*/
+    white-space: nowrap;
+    margin-top: 40%;
+    margin-bottom: 0.5em;
+    font-size: max(2vw,15px);
+    /* background-color: blueviolet; */
+}
+div#container > div.remaining_time > div#all_infos > div.info_time > p.info {
+    /*apparence*/
+    border-bottom: 1px white solid;
+    width: fit-content;
+    margin-bottom: 2.5em;
+    cursor: pointer;
+    opacity: 1;
+    font-size: 1.5em;
+}
+
+.end {
+    display:none;
+}
+
+#onboarding:not(.end) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00ecec3a;
+    backdrop-filter: blur(2px) ;
+    -webkit-backdrop-filter: blur(2px);
+    width: max(32vw,300px) ;
+    height: max(8vw,80px);
+    box-sizing: border-box;
+    border-radius: 5px;
+
+}
+
+#onboarding > div.texte_onboarding {
+    display: flex;
+    gap: 30px;
+    padding: 10px;
+    font-family: "zekton";
+    color: white;
+    font-size:max(1vw,12px);
+    line-height: 20px;
+    box-sizing: border-box;
+    
+}
+#onboarding > div > img {
+    width: 25px;
+    height: 25px;
+    align-self: center;
+}
+
+@media screen and (max-width:950px) {
+    body, body > div#wrapper {
+        overflow-y: auto;
+    }
+    body > div#wrapper {
+        margin-right:0;
+    }
+    div.radar svg {
+        width: max(40vw,250px);
+        height: max(40vw,250px);
+    }
+}
+
+@media screen and (max-width: 530px) {
+    body > div#wrapper > img#gauche {
+        display: none;
+    }
+
+    div#container > div.remaining_time img#hero {
+        margin-top: 2.5em;
+        margin-right: 0;
+    }
+
+    div#container > div.remaining_time {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+    
+    div#container > div.radar {
+        margin-top: 140px;
+    }
+    div#container > div.remaining_time > div.info_time > p.dDay {
+        font-size: 2em;
+        margin-top: 2em;
+    }
+    body > div#wrapper > div#container {
+        align-items: baseline;
+        margin-top: 20px;
+        margin-bottom:0;
+    }
+    #onboarding {
+        margin-right: 0;
+        margin-top: 35px;
+    }
+}
+
+/* Pour Mobile */
+@media screen and (max-width: 380px) {
+    div#container > div.remaining_time {
+        margin-right: 0;
+    }
+
+    div#container > div.remaining_time img#hero {
+        margin-top: 0;
+    }
+}
+

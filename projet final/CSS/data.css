@@ -1,0 +1,162 @@
+:root {
+    --bg_color: #353535;
+    --bg_message: rgba(10,10,10,0.5);
+    --border_neon: #00EBEC;
+    --white: #fff;
+}
+
+span {
+    font-family: 'zekton';
+    color: white;
+}
+
+h2 {
+    font-family: 'zekton'
+}
+
+main {
+    /* Paramètres du container */
+    margin: 4vh 5vw;
+    height: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4vw;
+}
+
+#doughnutContainer{
+    width: 300px;
+}
+
+#barContainer {
+    width: 250px;
+}
+
+body > div#wrapper > div#backgroundData:not(.visible) {
+    display: none;
+}
+#augmentation {
+    display: block;
+    text-align: center;
+}
+
+#augmentation svg {
+    display: block;
+    width: 100%;
+}
+
+#augmentation h2 {
+    padding: 5px;
+    color: #00EBEC;
+    font-size: 30px;
+}
+
+#augmentation svg:nth-child(1) {
+    margin-bottom: 10px;
+}
+
+#envieContinuer {
+    border: 2px solid var(--border_neon);
+}
+
+#envieContinuer {
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+#envieContinuer h2 {
+    margin-top: 10px;
+    color: white;
+    font-size: 35px;
+    text-align: center;
+}
+
+#augmentation span {
+    display: block;
+}
+
+#apparition span {
+    color: var(--border_neon);
+    font-size: 120px;
+}
+#apparition h2 {
+    font-size: 20px;
+    color: var(--white);
+    width: 200px;
+}
+
+
+body > div#wrapper > div#backgroundData {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height:100%;
+    z-index:1;
+    backdrop-filter: blur(5px) ;
+    -webkit-backdrop-filter: blur(5px);
+}
+
+body > div#wrapper > div#backgroundData > div#data {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 75vw;
+    background-color: rgba(0, 0, 0, 0.5); /*A revoir ensemble*/
+    border-left: 2px solid var(--border_neon);
+    border-right: 2px solid var(--border_neon);
+    margin-top: min(5vh,10px);
+}
+
+body > div#wrapper > div#backgroundData > div#data > header {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    margin-top: 1.5%;
+    width: 100%;
+    color: white;
+    font-family: 'zekton';
+}
+body > div#wrapper > div#backgroundData > div#data > header > div {
+    text-align: center;
+    grid-column-start:  2;
+    justify-self: center;
+
+}
+body > div#wrapper > div#backgroundData > div#data > header > div > p:nth-child(1) {
+    font-size : max(2.5vw,11px);
+    margin-bottom: 10px;
+}
+body > div#wrapper > div#backgroundData > div#data > header > div > p:nth-child(2) {
+    font-size : max(1.5vw,9px);
+}
+body > div#wrapper > div#backgroundData > div#data > header > img {
+    grid-column-start: 3;
+    grid-row-start: 1;
+    justify-self: end;
+    align-self: start;
+    width: max(1.5vw,15px);
+    margin-right: 4%;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 630px) {
+ 
+}
+@media screen and (max-width: 583px) {
+    body > div#wrapper > header > div#mainHeader {
+        /*apparence*/
+        z-index: 2;
+    }
+    body > div#wrapper > div#backgroundData > div#data {
+        margin-top: 70vh;
+        background-color: rgba(0, 0, 0, 0.8); /*A revoir ensemble*/
+    }
+
+}
